@@ -71,6 +71,21 @@ const loadClosedIssues = async () => {
 
 }
 
+/* {
+"id": 1,
+"title": "Fix navigation menu on mobile devices",
+"description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
+"status": "open",
+"labels": [
+"bug",
+"help wanted"
+],
+"priority": "high",
+"author": "john_doe",
+"assignee": "jane_smith",
+"createdAt": "2024-01-15T10:30:00Z",
+"updatedAt": "2024-01-15T10:30:00Z"
+}, */
 
 // DISPLAY CARDS
 const displayIssue = (issues) => {
@@ -81,33 +96,32 @@ const displayIssue = (issues) => {
 
     issues.data.forEach(issue => {
 
-        const card = document.createElement("div")
-
+        const card = document.createElement("div");
+        
         card.innerHTML = `
 
-           <div onclick="showDetails('${issue.id}')" class="card bg-base-100 shadow-xl border-t-4 ${issue.status === "open" ? "border-green-500" : "border-purple-500"}">
+           <div onclick="showDetails('${issue.id}')" class="card bg-base-100 shadow-xl border-t-4 h-full ${issue.status === "open" ? "border-green-500" : "border-purple-500"}">
            
-           <div class="card-body">
-           
-             <h2 class="card-title">${issue.title}</h2>
-           
-             <p>${issue.description}</p>
-           
-           <div class="flex gap-2">
-           
-             <div class="badge badge-error">${issue.label}</div>
-           
-             <div class="badge badge-warning">${issue.priority}</div>
-           
-           </div>
-           
-            <p class="text-sm opacity-60">#${issue.id} by ${issue.author}</p>
-           
-            <p class="text-sm opacity-60">${issue.createdAt}</p>
-           
-           </div>
-           
-           </div>
+            <div class="p-6 space-y-3">
+                <div class="flex justify-between">
+                    ${issue.status === "open" ? `<img src="./assets/Open-Status.png" alt="" class="h-[30px] w-[30px]">` : `<img src="./assets/Closed- Status .png" alt="" class="h-[30px] w-[30px]"> `}
+                    
+                    ${issue.priority === "high" ? `<button class="btn rounded-2xl bg-[#FEECEC] text-[#EF4444]">HIGH</button>` 
+                        : issue.priority === "low" ? `<button class="btn rounded-2xl bg-[#EEEFF2] text-[#9CA3AF]">LOW</button>` 
+                        : `<button class="btn rounded-2xl bg-[#FFF6D1] text-[#F59E0B]">MEDIUM</button>`}
+                    
+                    
+                </div>
+                <h2 class="font-bold text-2xl">${issue.title}</h2>
+                <p class="text-gray-400">${issue.description}</p>
+                <div class="flex gap-2">
+                    ${issue.labels.map(label => `<button class="btn rounded-2xl bg-red-300 text-up uppercase"> ${label} </button>`).join("")}
+          
+                </div>
+                <hr>
+                <p>#1 by ${issue.author}</p>
+                <p>${issue.createdAt.split("T")[0]}</p>
+            </div>
            
            `
 
