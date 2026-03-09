@@ -21,14 +21,17 @@ const setActiveButton = (id) => {
 
 // LOAD ALL ISSUES
 const loadCategories = () => {
-    loadingSpinner.classList.remove("hidden");
-    loadingSpinner.classList.add("flex");
+    
     setActiveButton("allBtn")
-
+    
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+    
     fetch(url)
     .then(res => res.json())
     .then(data => displayIssue(data))
+    loadingSpinner.classList.add("hidden");
+    
+
 
 
 }
@@ -36,17 +39,16 @@ const loadCategories = () => {
 
 // OPEN ISSUES
 const loadOpenIssues = async () => {
-    loadingSpinner.classList.remove("hidden");
-    loadingSpinner.classList.add("flex");
+   
     setActiveButton("openBtn")
     
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     
-    const res = await fetch(url)
+    const res = await fetch(url);
     
-    const data = await res.json()
-    loadingSpinner.classList.add("flex");
-
+    const data = await res.json();
+    
+    
     const openIssues = data.data.filter(issue => issue.status === "open")
 
     displayIssue({ data: openIssues })
