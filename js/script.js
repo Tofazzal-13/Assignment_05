@@ -164,7 +164,7 @@ const showDetails = async (id) => {
                 <div class="flex justify-between bg-gray-200 p-6">
                     <div>
                         <p>Assignee:</p>
-                        <h2>${issue.assignee}</h2>
+                        <h2 class="text-xl font-semibold">${issue.assignee}</h2>
                     </div>
                     <div>
                         <p>Priority:</p>
