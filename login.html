@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- daisy and tailwind added -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- css added -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>LogIn</title>
+</head>
+
+<body>
+    <main class="w-[700px] mx-auto">
+        <div class="flex flex-col justify-center mt-10 border-white bg-[#ffffff] shadow-2xl space-y-3 p-10">
+            <div class="text-center space-y-3 mt-10">
+                <div class="flex justify-center">
+                    <img src="assets/github-logo.png" alt="">
+                </div>
+                <h2 class="text-2xl font-semibold">GitHub Issues Tracker</h2>
+                <p class="text-[#64748B] ">Sign in to manage your issues</p>
+            </div>
+            <div class="space-y-5">
+                <div class="flex flex-col space-y-2">
+                    <label for="" class="text-xl font-semibold">Username</label>
+                    <input type="text" placeholder="Enter Username" class="border-2 rounded-2xl p-4" id="userValue">
+                    <p class="text-[#4A00FF]">Default: admin</p>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="" class="text-xl font-semibold">Password</label>
+                    <input type="password" placeholder="Enter Password" class="border-2 rounded-2xl p-4" id="passwordValue">
+                    <p class="text-[#4A00FF]">Default: admin123</p>
+                </div>
+                <div>
+                    <button class="btn btn-xl btn-primary w-full rounded-2xl" id="btn_login">Sign In</button>
+                </div>
+                <div>
+                    <div class="divider">OR</div>
+                </div>
+                <div class="text-center">
+                    <p class="text-[#64748B]">Demo Credentials:</p>
+                    <div class="bg-[#F8FAFC] p-10 mt-4">
+                        <p><span class="text-xl font-semibold">Username:</span> admin</p>
+                        <p><span class="text-xl font-semibold">Password:</span> admin123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- js added -->
+    <script src="js/logIn.js"></script>
+</body>
+
+</html>
