@@ -34,17 +34,9 @@
                 <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>
             </div>
             <div class="flex gap-2">
-                <label class="input">
-                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
-                            stroke="currentColor">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.3-4.3"></path>
-                        </g>
-                    </svg>
-                    <input type="search" required placeholder="Search" />
-                </label>
-                <button class="btn btn-primary rounded-xl ">+ New Issue</button>
+                <input id="searchInput" type="text" placeholder="Search issue" class="input input-bordered" />
+
+                <button onclick="searchIssue()" class="btn btn-primary rounded-xl ">+ New Issue</button>
             </div>
         </section>
     </header>
@@ -52,9 +44,9 @@
     <main>
         <!-- category button  -->
         <section class="w-10/12 border border-gray-100  mx-auto mt-20 p-4 rounded-xl bg-[#FFFFFF] shadow-xl">
-            <button class="btn btn-primary rounded-[10px]">All</button>
-            <button class="btn btn-outline rounded-[10px]">Open</button>
-            <button class="btn btn-outline rounded-[10px]">Close</button>
+            <button id="allBtn" onclick="loadCategories()" class="btn btn-outline">All</button>
+            <button id="openBtn" onclick="loadOpenIssues()" class="btn btn-outline btn-success">Open</button>
+            <button id="closedBtn" onclick="loadClosedIssues()" class="btn btn-outline btn-secondary">Close</button>
 
         </section>
         <!-- display category -->
@@ -65,7 +57,7 @@
                         <img src="./assets/Aperture.png" alt="">
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold">50 Issues</h4>
+                        <h4 class="text-xl font-semibold"><span id="issueCount">0</span> Issues</h4>
                         <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                 </div>
@@ -81,13 +73,27 @@
                 </div>
             </div>
             <hr class="text-gray-400">
-            <div>
-               
-            </div>
+            <!-- cards -->
+            <div id="categoryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6"></div>
+
+            <!-- Modal -->
+
+            <dialog id="issueModal" class="modal">
+
+                <div class="modal-box">
+
+                    <button onclick="closeModal()"
+                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+
+                    <div id="modalData"></div>
+
+                </div>
+
+            </dialog>
         </section>
     </main>
-     <!-- js added  -->
-    
+    <!-- js added  -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
