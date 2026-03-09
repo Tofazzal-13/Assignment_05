@@ -13,93 +13,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
-    <!-- font-awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <!-- css added -->
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Main page</title>
+    
 
+    <title>LogIn</title>
 </head>
 
 <body>
-
-    <header class="bg-[#FFFFFF] shadow-xl">
-        <section class="w-11/12 mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 p-4">
-                <img src="./assets/github-logo.png" class="w-[50px]" alt="">
-                <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>
-            </div>
-            <div class="flex gap-2">
-                <input id="searchInput" type="text" placeholder="Search issue" class="input input-bordered" />
-
-                <button onclick="searchIssue()" class="btn btn-primary rounded-xl ">+ New Issue</button>
-            </div>
-        </section>
-    </header>
-
-    <main>
-        <!-- category button  -->
-        <section class="w-10/12 border border-gray-100  mx-auto mt-20 p-4 rounded-xl bg-[#FFFFFF] shadow-xl">
-            <button id="allBtn" onclick="loadCategories()" class="btn btn-outline btn-primary">All</button>
-            <button id="openBtn" onclick="loadOpenIssues()" class="btn btn-outline btn-primary">Open</button>
-            <button id="closedBtn" onclick="loadClosedIssues()" class="btn  btn-outline btn-primary">Close</button>
-
-        </section>
-        <!-- display category -->
-        <section class="w-10/12 border border-gray-100  mx-auto mt-10  rounded-xl bg-[#FFFFFF] shadow-xl">
-            <div class="flex justify-between items-center p-4">
-                <div class="flex gap-2 items-center">
-                    <div>
-                        <img src="./assets/Aperture.png" alt="">
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold"><span id="issueCount">0</span> Issues</h4>
-                        <p class="text-[#64748B]">Track and manage your project issues</p>
-                    </div>
+    <main class="w-[700px] mx-auto">
+        <div class="flex flex-col justify-center mt-10 border-white bg-[#ffffff] shadow-2xl space-y-3 p-10">
+            <div class="text-center space-y-3 mt-10">
+                <div class="flex justify-center">
+                    <img src="assets/github-logo.png" alt="">
                 </div>
-                <div class="flex gap-4">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-circle text-success"></i>
-                        <p class="font-semibold">open</p>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-circle text-primary"></i>
-                        <p class="font-semibold">close</p>
+                <h2 class="text-2xl font-semibold">GitHub Issues Tracker</h2>
+                <p class="text-[#64748B] ">Sign in to manage your issues</p>
+            </div>
+            <div class="space-y-5">
+                <div class="flex flex-col space-y-2">
+                    <label for="" class="text-xl font-semibold">Username</label>
+                    <input type="text" placeholder="Enter Username" class="border-2 rounded-2xl p-4" id="userValue">
+                    <p class="text-[#4A00FF]">Default: admin</p>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="" class="text-xl font-semibold">Password</label>
+                    <input type="password" placeholder="Enter Password" class="border-2 rounded-2xl p-4" id="passwordValue">
+                    <p class="text-[#4A00FF]">Default: admin123</p>
+                </div>
+                <div>
+                    <button class="btn btn-xl btn-primary w-full rounded-2xl" id="btn_login">Sign In</button>
+                </div>
+                <div>
+                    <div class="divider">OR</div>
+                </div>
+                <div class="text-center">
+                    <p class="text-[#64748B]">Demo Credentials:</p>
+                    <div class="bg-[#F8FAFC] p-10 mt-4">
+                        <p><span class="text-xl font-semibold">Username:</span> admin</p>
+                        <p><span class="text-xl font-semibold">Password:</span> admin123</p>
                     </div>
                 </div>
             </div>
-            <hr class="text-gray-400">
-            <!-- cards -->
-            <div id="categoryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-
-            </div>
-
-            <!-- loading spinner -->
-            <div id="loadingSpinner" class="hidden justify-center items-center">
-                <span class="loading loading-dots loading-xl"></span>
-            </div>
-         
-            <!-- Modal -->
-
-            <dialog id="issueModal" class="modal">
-
-                <div class="modal-box">
-                    <div id="modalData"></div>
-                </div>
-
-            </dialog>
-            
-               
-            
-
-        </section>
+        </div>
     </main>
-    <!-- js added  -->
-    <script src="js/script.js"></script>
+
+
+
+    <!-- js added -->
+    <script src="js/logIn.js"></script>
 </body>
 
 </html>

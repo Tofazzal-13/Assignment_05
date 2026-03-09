@@ -9,7 +9,7 @@ document.getElementById("btn_login")
 
         if(userName === "admin" && passNumber === "admin123"){
             alert("logIn successfully");
-            window.location.assign("./index.html")
+            window.location.href = "home.html";
             userValue.value = ""
             passwordValue.value = ""
         }
