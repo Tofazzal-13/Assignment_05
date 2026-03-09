@@ -7,7 +7,7 @@ document.getElementById("btn_login")
 
         if(userName === "admin" && passNumber === "admin123"){
             alert("logIn successfully");
-            window.location.assign("./home.html")
+            window.location.assign("./index.html")
             userValue.value = ""
             passwordValue.value = ""
         }
