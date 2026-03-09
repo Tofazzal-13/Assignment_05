@@ -1,5 +1,6 @@
 const categoryContainer = document.getElementById("categoryContainer")
 const issueCount = document.getElementById("issueCount")
+const loadingSpinner = document.getElementById("loadingSpinner")
 
 
 
@@ -14,17 +15,14 @@ const setActiveButton = (id) => {
 
     document.getElementById(id).classList.add("btn-active")
     document.getElementById(id).classList.add("btn-primary")
-    
-
-  
-
 
 }
 
 
 // LOAD ALL ISSUES
 const loadCategories = () => {
-
+    loadingSpinner.classList.remove("hidden");
+    loadingSpinner.classList.add("flex");
     setActiveButton("allBtn")
 
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
@@ -38,14 +36,16 @@ const loadCategories = () => {
 
 // OPEN ISSUES
 const loadOpenIssues = async () => {
-
+    loadingSpinner.classList.remove("hidden");
+    loadingSpinner.classList.add("flex");
     setActiveButton("openBtn")
-
+    
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
-
+    
     const res = await fetch(url)
-
+    
     const data = await res.json()
+    loadingSpinner.classList.add("flex");
 
     const openIssues = data.data.filter(issue => issue.status === "open")
 
