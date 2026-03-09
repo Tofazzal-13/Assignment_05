@@ -4,12 +4,19 @@ const issueCount = document.getElementById("issueCount")
 
 // ACTIVE BUTTON
 const setActiveButton = (id) => {
-
     document.getElementById("allBtn").classList.remove("btn-active")
+    document.getElementById("allBtn").classList.remove("btn-primary")
     document.getElementById("openBtn").classList.remove("btn-active")
+    document.getElementById("openBtn").classList.remove("btn-primary")
     document.getElementById("closedBtn").classList.remove("btn-active")
+    document.getElementById("closedBtn").classList.remove("btn-primary")
 
     document.getElementById(id).classList.add("btn-active")
+    document.getElementById(id).classList.add("btn-primary")
+    
+
+  
+
 
 }
 
@@ -20,7 +27,9 @@ const loadCategories = () => {
     setActiveButton("allBtn")
 
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
-    fetch(url).then(res => res.json()).then(data => console.log(data))
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayIssue(data))
 
 
 }
