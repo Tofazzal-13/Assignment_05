@@ -113,7 +113,7 @@ const displayIssue = (issues) => {
                     
                 </div>
                 <h2 class="font-bold text-2xl">${issue.title}</h2>
-                <p class="text-gray-400">${issue.description}</p>
+                <p class="text-gray-400 line-clamp-2">${issue.description}</p>
                 <div class="flex gap-2">
                     ${issue.labels.map(label => `<button class="btn rounded-2xl bg-red-300 text-up uppercase"> ${label} </button>`).join("")}
           
@@ -146,21 +146,38 @@ const showDetails = async (id) => {
     document.getElementById("issueModal").showModal()
 
     document.getElementById("modalData").innerHTML = `
-
-      <h2 class="text-xl font-bold mb-2">${issue.title}</h2>
-      
-      <p>${issue.description}</p>
-      
-      <div class="mt-3">
-      
-        <p>Status: ${issue.status}</p>
-        <p>Author: ${issue.author}</p>
-        <p>Priority: ${issue.priority}</p>
-        <p>Label: ${issue.label}</p>
-        <p>Date: ${issue.createdAt}</p>
-      
-      </div>
-
+      <div class="space-y-3 ">
+                <h2 class="font-semibold text-2xl">${issue.title}</h2>
+                <div class="flex items-center gap-2">
+                    ${issue.status === "open" ? 
+                        `<button class="btn bg-success text-white rounded-xl">Opened</button>` 
+                        : `<button class="btn bg-primary text-white rounded-xl">close</button>`}
+                    
+                    <p><i class="fa-solid fa-circle "></i> Opened by ${issue.assignee}</p>
+                    <p><i class="fa-solid fa-circle"></i> ${issue.updatedAt.split("T")[0]}</p>
+                </div>
+                <div class="flex gap-2">
+                    ${issue.labels.map(label => `<button class="btn rounded-2xl bg-red-300 text-up uppercase"> ${label} </button>`).join("")}
+          
+                </div>
+                <p class="text-gray-400 line-clamp-2">${issue.description}</p>
+                <div class="flex justify-between bg-gray-200 p-6">
+                    <div>
+                        <p>Assignee:</p>
+                        <h2>${issue.assignee}</h2>
+                    </div>
+                    <div>
+                        <p>Priority:</p>
+                        ${issue.priority === "high" ? `<button class="btn rounded-2xl bg-[#FEECEC] text-[#EF4444]">HIGH</button>` 
+                        : issue.priority === "low" ? `<button class="btn rounded-2xl bg-[#EEEFF2] text-[#9CA3AF]">LOW</button>` 
+                        : `<button class="btn rounded-2xl bg-[#FFF6D1] text-[#F59E0B]">MEDIUM</button>`}
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                 <button onclick="closeModal()"
+                    class="btn btn-sm  btn-ghost  bg-primary text-white p-5 text-semibold rounded-xl">close</button>
+                </div>
+        </div>
 `
 
 }
